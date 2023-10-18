@@ -1,0 +1,106 @@
+.add_new_course {
+  width: 80vw;
+  margin: 40px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add_new_course_form_wrapper {
+  background-color: #fff;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  margin: 10px;
+  width: 40rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px 0px;
+}
+
+.form_head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.form {
+  width: 80%;
+  margin: 0px auto;
+}
+
+.course_id,
+.course_name,
+.category,
+.image_link,
+.duration,
+.price,
+.description,
+.who_should_learn,
+.description_2,
+.description_3,
+.tecnologies_covered_images_link,
+.certificate_image_link,
+.rating,
+.meeting_link,
+.recording_link,
+.review,
+.syllabus_link,
+.popular_role,
+.we_provides,
+.button {
+  width: 100%;
+  margin: 20px 0;
+}
+
+.input-id,
+.input-name,
+.input-category,
+.input-image,
+.input-duration,
+.input-price,
+.input-description,
+.input-who,
+.input-description-2,
+.input-description-3,
+.input-tech,
+.input-certificate,
+.input-rating,
+.input-meeting,
+.input-recording,
+.input-review,
+.input-syllabus,
+.input-role,
+.input-provides {
+  width: 100%;
+}
+
+.input-button {
+  background-color: var(--primary-color);
+  padding: 10px 30px;
+  width: 100%;
+  border-radius: 6px;
+  color: #fff;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.copyright {
+  margin-top: 30px;
+  margin-bottom: 12px;
+}
+
+.copyright p {
+  font-weight: 700;
+}
+
+@media only screen and (max-width: 540px) {
+  .corporate {
+    width: 100vw;
+  }
+}

@@ -1,0 +1,58 @@
+.logout_modal {
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  border-radius: 8px;
+  position: fixed;
+  top: 40%;
+  left: 40%;
+  width: 400px;
+  height: 200px;
+  text-align: center;
+  padding: 20px 10px;
+  display: none;
+  z-index: 9999999;
+}
+.modal_active {
+  display: block;
+}
+.logout_modal p {
+  text-transform: capitalize;
+  font-weight: 500;
+  margin-bottom: 10px;
+  padding: 20px;
+}
+.logout_modal button {
+  padding: 10px 20px;
+  color: #fff;
+  background-color: var(--primary-color);
+  font-weight: 500;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+.logout_modal button:hover {
+  background-color: var(--hover-effect);
+}
+
+.login_signup_wrapper {
+  display: flex;
+}
+@media only screen and (max-width: 800px) {
+  .active {
+    display: block;
+    background-color: var(--secondary-color);
+    width: 100vw;
+    height: fit-content;
+    padding-bottom: 20px;
+    border-bottom: 4px solid var(--primary-color);
+  }
+  .close {
+    display: none;
+  }
+  .logout_modal {
+    left: 13%;
+    width: 280px;
+    height: 220px;
+    padding: 20px 10px;
+  }
+}

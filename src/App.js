@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import Help from "./Pages/Help";
+import Home from "./Pages/Home";
+import Footer from "./components/Footer/Footer";
+import Navbar from "./components/Navbar/Navbar";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Practice from "./components/Practice/Practice";
+import Signup from "./components/Login and SignUp/Signup";
+import Login from "./components/Login and SignUp/Login";
+import ScrollToTop from "./ScrollToTop";
+import DoctorSearch from "./Pages/DoctorSearch";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <Navbar />
+        <ScrollToTop />
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/help" element={<Help />} />
+          <Route exact path="/register" element={<Signup />} />
+          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/listpractice" element={<Practice />} />
+          <Route exact path="/doctorsearch" element={<DoctorSearch />} />
+        </Routes>
+        <Footer />
+      </Router>
+    </>
   );
 }
 
