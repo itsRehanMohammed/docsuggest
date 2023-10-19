@@ -19,11 +19,13 @@ const DoctorSearch = () => {
   const [autocomplete, setAutocomplete] = useState(null);
   const [childClicked, setChildClicked] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-
+  // console.log({ childClicked });
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude } }) => {
-      setCoords({ lat: latitude, lng: longitude });
-    });
+    navigator.geolocation.getCurrentPosition(
+      ({ coords: { latitude, longitude } }) => {
+        setCoords({ lat: latitude, lng: longitude });
+      }
+    );
   }, []);
 
   useEffect(() => {
@@ -46,10 +48,15 @@ const DoctorSearch = () => {
   const onLoad = (autoC) => setAutocomplete(autoC);
 
   const onPlaceChanged = () => {
-    const lat = autocomplete.getPlace().geometry.location.lat();
-    const lng = autocomplete.getPlace().geometry.location.lng();
+    if (autocomplete && autocomplete.getPlace()) {
+      const lat = autocomplete.getPlace().geometry.location.lat();
+      const lng = autocomplete.getPlace().geometry.location.lng();
 
-    setCoords({ lat, lng });
+      setCoords({ lat, lng });
+    } else {
+      // Handle the case where the autocomplete result is not available or valid
+      console.error("Autocomplete result is not available or valid");
+    }
   };
 
   return (
@@ -59,14 +66,37 @@ const DoctorSearch = () => {
         googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
         libraries={["places"]} // Specify "places" library
       >
-        <Header onPlaceChanged={onPlaceChanged} onLoad={onLoad} />
-
-        <Grid container spacing={3} style={{ width: "100%" }}>
+        <Grid container spacing={1} style={{ width: "100%" }}>
           <Grid item xs={12} md={4}>
-            <List isLoading={isLoading} childClicked={childClicked} places={places} type={type} setType={setType} rating={rating} setRating={setRating} />
+            <List
+              isLoading={isLoading}
+              childClicked={childClicked}
+              places={places}
+              type={type}
+              setType={setType}
+              rating={rating}
+              setRating={setRating}
+            />
           </Grid>
-          <Grid item xs={12} md={8} style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-            <Map setChildClicked={setChildClicked} setBounds={setBounds} setCoords={setCoords} coords={coords} places={places} />
+          <Grid
+            item
+            xs={12}
+            md={8}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Map
+              setChildClicked={setChildClicked}
+              setBounds={setBounds}
+              setCoords={setCoords}
+              coords={coords}
+              places={places}
+              onPlaceChanged={onPlaceChanged}
+              onLoad={onLoad}
+            />
           </Grid>
         </Grid>
       </LoadScript>

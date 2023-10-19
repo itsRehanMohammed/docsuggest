@@ -15,7 +15,10 @@ export default makeStyles((theme) => ({
     marginRight: theme.spacing(2),
     marginLeft: 0,
     width: "100%",
-    [theme.breakpoints.up("sm")]: { marginLeft: theme.spacing(3), width: "auto" },
+    [theme.breakpoints.up("sm")]: {
+      marginLeft: theme.spacing(3),
+      width: "auto",
+    },
   },
   searchIcon: {
     padding: theme.spacing(0, 2),
@@ -28,16 +31,18 @@ export default makeStyles((theme) => ({
   },
   inputRoot: {
     color: "inherit",
+    background: "rgba(59, 130, 246, 0.05)",
+    boxShadow: "0px 3px 6px rgba(0, 0, 0, 0.16)", // Add box shadow
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
-    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+    paddingLeft: `calc(2em + ${theme.spacing(4)}px)`,
     transition: theme.transitions.create("width"),
     width: "100%",
-    [theme.breakpoints.up("md")]: { width: "20ch" },
+    [theme.breakpoints.up("md")]: { width: "40ch" },
   },
   toolbar: {
     display: "flex",
-    justifyContent: "space-between",
+    justifyContent: "flex-end",
   },
 }));

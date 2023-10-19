@@ -9,23 +9,21 @@ const Header = ({ onPlaceChanged, onLoad }) => {
   const classes = useStyles();
 
   return (
-    <AppBar style={{ background: "#3b82f6" }} position="static">
-      <Toolbar className={classes.toolbar}>
-        <Typography variant="h5" className={classes.title}>
-          Search doctors near you
-        </Typography>
-        <Box display="flex">
-          <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>
-            <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
-              <InputBase placeholder="Search…" classes={{ root: classes.inputRoot, input: classes.inputInput }} />
+    <Toolbar className={classes.toolbar}>
+      <Box display="flex">
+        <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>
+          <div className={classes.search}>
+            <div className={classes.searchIcon}>
+              <SearchIcon />
             </div>
-          </Autocomplete>
-        </Box>
-      </Toolbar>
-    </AppBar>
+            <InputBase
+              placeholder="Search…"
+              classes={{ root: classes.inputRoot, input: classes.inputInput }}
+            />
+          </div>
+        </Autocomplete>
+      </Box>
+    </Toolbar>
   );
 };
 
