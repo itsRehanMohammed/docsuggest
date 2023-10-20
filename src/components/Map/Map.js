@@ -4,47 +4,41 @@ import useStyles from "./styles.js";
 import { Paper, Typography, useMediaQuery } from "@material-ui/core";
 import LocationOnOutlinedIcon from "@material-ui/icons/LocationOnOutlined";
 import Rating from "@material-ui/lab/Rating";
-
 import mapStyles from "../../mapStyles";
 import Header from "../Header/Header.js";
-const Map = ({
-  coords,
-  places,
-  setCoords,
-  setBounds,
-  setChildClicked,
-  weatherData,
-  onPlaceChanged,
-  onLoad,
-}) => {
+const Map = ({ coords, places, setChildClicked, onPlaceChanged, onLoad }) => {
   const classes = useStyles();
   const matches = useMediaQuery("(min-width:600px)");
-  // const center = { lat: 48.858844, lng: 2.294351 }; // Eiffel Tower coordinates
-  const center = useMemo(() => ({ lat: 19.076, lng: 72.8777 }), []);
 
-  // console.log("places", places);
+  const center = useMemo(() => {
+    if (coords.lat !== 0 && coords.lng !== 0) {
+      // Use the coordinates from the selected location
+      return { lat: coords.lat, lng: coords.lng };
+    } else {
+      // Default center coordinates
+      return { lat: 19.076, lng: 72.8777 };
+    }
+  }, [coords]);
+
   return (
     <>
       {matches ? (
         <div className={classes.mapContainer}>
           <Header onPlaceChanged={onPlaceChanged} onLoad={onLoad} />
-          {/* <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}> */}
           <GoogleMap
             onChildClick={(child) => setChildClicked(child)}
-            defaultCenter={center}
+            center={center} // Set the center based on the selected location
+            zoom={14}
             options={{
               disableDefaultUI: true,
               zoomControl: true,
               styles: mapStyles,
             }}
-            zoom={14}
-            center={center}
-            margin={[50, 50, 50, 50]}
-            onChange={""}
             mapContainerClassName={classes.mapContainer}
+            margin={[50, 50, 50, 50]}
           >
-            {/* <MarkerF position={center} /> */}
-            {places.length &&
+            <MarkerF position={center} />
+            {/* {places.length &&
               places.map((place, i) => (
                 <div
                   className={classes.markerContainer}
@@ -60,6 +54,7 @@ const Map = ({
                         lat: Number(place.latitude),
                         lng: Number(place.longitude),
                       }}
+                      // position={center}
                     >
                       <Paper elevation={3} className={classes.paper}>
                         <Typography
@@ -88,9 +83,8 @@ const Map = ({
                     </InfoWindowF>
                   )}
                 </div>
-              ))}
+              ))} */}
           </GoogleMap>
-          {/* </LoadScript> */}
         </div>
       ) : null}
     </>

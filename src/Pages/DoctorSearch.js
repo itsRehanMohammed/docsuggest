@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Header from "../components/Header/Header";
 import Map from "../components/Map/Map";
 import List from "../components/List/List";
-import { LoadScript } from "@react-google-maps/api";
+import { LoadScript, PanTo } from "@react-google-maps/api";
 import data from "../places.json";
 import { CssBaseline, Grid } from "@material-ui/core";
 const DoctorSearch = () => {
@@ -20,6 +20,8 @@ const DoctorSearch = () => {
   const [childClicked, setChildClicked] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   // console.log({ childClicked });
+  const [map, setMap] = useState(null); // Add a state variable to store the map instance
+
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       ({ coords: { latitude, longitude } }) => {
@@ -53,8 +55,14 @@ const DoctorSearch = () => {
       const lng = autocomplete.getPlace().geometry.location.lng();
 
       setCoords({ lat, lng });
+
+      // Use the map instance to pan to the selected location
+      if (map) {
+        const newCenter = { lat, lng };
+        map.panTo(newCenter);
+        // map.setZoom(14); // Optionally, set the zoom level as needed
+      }
     } else {
-      // Handle the case where the autocomplete result is not available or valid
       console.error("Autocomplete result is not available or valid");
     }
   };
@@ -96,6 +104,7 @@ const DoctorSearch = () => {
               places={places}
               onPlaceChanged={onPlaceChanged}
               onLoad={onLoad}
+              setMap={setMap}
             />
           </Grid>
         </Grid>
