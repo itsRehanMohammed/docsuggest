@@ -37,8 +37,8 @@ const Map = ({ coords, places, setChildClicked, onPlaceChanged, onLoad }) => {
             mapContainerClassName={classes.mapContainer}
             margin={[50, 50, 50, 50]}
           >
-            <MarkerF position={center} />
-            {/* {places.length &&
+            {/* <MarkerF position={center} /> */}
+            {places.length &&
               places.map((place, i) => (
                 <div
                   className={classes.markerContainer}
@@ -83,7 +83,7 @@ const Map = ({ coords, places, setChildClicked, onPlaceChanged, onLoad }) => {
                     </InfoWindowF>
                   )}
                 </div>
-              ))} */}
+              ))}
           </GoogleMap>
         </div>
       ) : null}

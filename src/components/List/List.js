@@ -9,7 +9,7 @@ import {
   Select,
 } from "@material-ui/core";
 
-import PlaceDetails from "../PlaceDetails/PlaceDetails";
+import DoctorCard from "../DoctorCard/DoctorCard";
 import useStyles from "./styles.js";
 
 const List = ({
@@ -75,7 +75,7 @@ const List = ({
                 xs={12}
                 className={classes.listItem}
               >
-                <PlaceDetails
+                <DoctorCard
                   selected={Number(childClicked) === i}
                   refProp={elRefs[i]}
                   place={place}

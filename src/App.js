@@ -9,6 +9,7 @@ import Signup from "./components/Login and SignUp/Signup";
 import Login from "./components/Login and SignUp/Login";
 import ScrollToTop from "./ScrollToTop";
 import DoctorSearch from "./Pages/DoctorSearch";
+import DoctorDetails from "./components/DoctorDetails/DoctorDetails";
 function App() {
   return (
     <>
@@ -22,6 +23,7 @@ function App() {
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/listpractice" element={<Practice />} />
           <Route exact path="/doctorsearch" element={<DoctorSearch />} />
+          <Route exact path="/doctorsearch/:name" element={<DoctorDetails />} />
         </Routes>
         <Footer />
       </Router>
