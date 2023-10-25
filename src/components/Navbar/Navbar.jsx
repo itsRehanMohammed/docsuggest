@@ -27,10 +27,15 @@ const Navbar = () => {
   };
   const logoutHandeler = async () => {
     setModal(false);
-    const response = await fetch("https://mosho.onrender.com/api/logout", {
+    const response = await fetch("/api/logout", {
       method: "POST",
-      headers: { Authorization: `Bearer ${localStorage.getItem("token")}`, "Content-Type": "application/json" },
-      body: JSON.stringify({ refresh_token: localStorage.getItem("refresh_token") }),
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        refresh_token: localStorage.getItem("refresh_token"),
+      }),
     });
     localStorage.removeItem("token");
     localStorage.removeItem("refresh_token");
@@ -50,7 +55,16 @@ const Navbar = () => {
       <>
         <div className=" bg-gradient-to-b from-blue-200 to-white text-white flex flex-row text-[#000] items-center justify-between py-3 px-10">
           <div className="flex flex-row items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-10 h-10 text-white p-2 bg-blue-500 rounded-full" viewBox="0 0 24 24">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              className="w-10 h-10 text-white p-2 bg-blue-500 rounded-full"
+              viewBox="0 0 24 24"
+            >
               <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
             </svg>
             <Link to="/">
@@ -71,14 +85,28 @@ const Navbar = () => {
 
             {/* <button className="bg-[#3b82f6] px-5 py-3 rounded-3xl text-white">Register Now</button> */}
             {!localStorage.getItem("token") ? (
-              <Link to={"/register"} className="bg-[#3b82f6] px-5 py-3 rounded-3xl text-white">
+              <Link
+                to={"/register"}
+                className="bg-[#3b82f6] px-5 py-3 rounded-3xl text-white"
+              >
                 Register Now
               </Link>
             ) : (
               <div className="after_login">
-                <Button id="fade-button" aria-controls={open ? "fade-menu" : undefined} aria-haspopup="true" aria-expanded={open ? "true" : undefined} onClick={handleClick}>
-                  <Avatar sx={{ width: 40, height: 40 }} style={{ backgroundColor: "#3b82f6" }}>
-                    {(localStorage.getItem("username") && localStorage.getItem("username").slice(0, 1)) || "U"}
+                <Button
+                  id="fade-button"
+                  aria-controls={open ? "fade-menu" : undefined}
+                  aria-haspopup="true"
+                  aria-expanded={open ? "true" : undefined}
+                  onClick={handleClick}
+                >
+                  <Avatar
+                    sx={{ width: 40, height: 40 }}
+                    style={{ backgroundColor: "#3b82f6" }}
+                  >
+                    {(localStorage.getItem("username") &&
+                      localStorage.getItem("username").slice(0, 1)) ||
+                      "U"}
                     {}
                   </Avatar>
                 </Button>
@@ -94,12 +122,24 @@ const Navbar = () => {
                 >
                   <MenuItem onClick={logoutModal}>Logout</MenuItem>
                 </Menu>
-                <div className={modal ? "logout_modal modal_active" : "logout_modal"}>
-                  <p style={{ color: "#000" }}>Are You Sure You want to logout?</p>
-                  <button style={{ backgroundColor: "red", marginRight: "20px" }} onClick={logoutHandeler}>
+                <div
+                  className={
+                    modal ? "logout_modal modal_active" : "logout_modal"
+                  }
+                >
+                  <p style={{ color: "#000" }}>
+                    Are You Sure You want to logout?
+                  </p>
+                  <button
+                    style={{ backgroundColor: "red", marginRight: "20px" }}
+                    onClick={logoutHandeler}
+                  >
                     Logout
                   </button>
-                  <button style={{ backgroundColor: "#047aed" }} onClick={() => setModal(false)}>
+                  <button
+                    style={{ backgroundColor: "#047aed" }}
+                    onClick={() => setModal(false)}
+                  >
                     Cancel
                   </button>
                 </div>
@@ -121,7 +161,10 @@ const Navbar = () => {
             </Link>
           </div>
           <div>
-            <button onClick={() => setIsOpen(!isOpen)} className=" p-2 rounded-lg  focus:outline-none ">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className=" p-2 rounded-lg  focus:outline-none "
+            >
               <div className="flex flex-col items-center">
                 <span className="h-0.5 w-4 bg-black mb-1"></span>
                 <span className="h-0.5 w-4 bg-black mb-1"></span>
@@ -144,14 +187,28 @@ const Navbar = () => {
             <div className="flex flex-row items-center mt-5">
               {/* <button className="bg-[#3b82f6] px-5 py-3 rounded-3xl text-white">Register Now</button> */}
               {!localStorage.getItem("token") ? (
-                <Link to={"/register"} className="bg-[#3b82f6] px-5 py-3 rounded-3xl text-white">
+                <Link
+                  to={"/register"}
+                  className="bg-[#3b82f6] px-5 py-3 rounded-3xl text-white"
+                >
                   Register Now
                 </Link>
               ) : (
                 <div className="after_login">
-                  <Button id="fade-button" aria-controls={open ? "fade-menu" : undefined} aria-haspopup="true" aria-expanded={open ? "true" : undefined} onClick={handleClick}>
-                    <Avatar sx={{ width: 40, height: 40 }} style={{ backgroundColor: "#3b82f6" }}>
-                      {(localStorage.getItem("username") && localStorage.getItem("username").slice(0, 1)) || "U"}
+                  <Button
+                    id="fade-button"
+                    aria-controls={open ? "fade-menu" : undefined}
+                    aria-haspopup="true"
+                    aria-expanded={open ? "true" : undefined}
+                    onClick={handleClick}
+                  >
+                    <Avatar
+                      sx={{ width: 40, height: 40 }}
+                      style={{ backgroundColor: "#3b82f6" }}
+                    >
+                      {(localStorage.getItem("username") &&
+                        localStorage.getItem("username").slice(0, 1)) ||
+                        "U"}
                       {}
                     </Avatar>
                   </Button>
@@ -167,12 +224,24 @@ const Navbar = () => {
                   >
                     <MenuItem onClick={logoutModal}>Logout</MenuItem>
                   </Menu>
-                  <div className={modal ? "logout_modal modal_active" : "logout_modal"}>
-                    <p style={{ color: "#000" }}>Are You Sure You want to logout?</p>
-                    <button style={{ backgroundColor: "red", marginRight: "20px" }} onClick={logoutHandeler}>
+                  <div
+                    className={
+                      modal ? "logout_modal modal_active" : "logout_modal"
+                    }
+                  >
+                    <p style={{ color: "#000" }}>
+                      Are You Sure You want to logout?
+                    </p>
+                    <button
+                      style={{ backgroundColor: "red", marginRight: "20px" }}
+                      onClick={logoutHandeler}
+                    >
                       Logout
                     </button>
-                    <button style={{ backgroundColor: "#047aed" }} onClick={() => setModal(false)}>
+                    <button
+                      style={{ backgroundColor: "#047aed" }}
+                      onClick={() => setModal(false)}
+                    >
                       Cancel
                     </button>
                   </div>

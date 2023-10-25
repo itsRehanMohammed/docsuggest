@@ -23,7 +23,11 @@ function App() {
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/listpractice" element={<Practice />} />
           <Route exact path="/doctorsearch" element={<DoctorSearch />} />
-          <Route exact path="/doctorsearch/:name" element={<DoctorDetails />} />
+          <Route
+            exact
+            path="/doctorsearch/:doctorname"
+            element={<DoctorDetails />}
+          />
         </Routes>
         <Footer />
       </Router>
