@@ -1,0 +1,9 @@
+const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phoneNumber: "",
+    address: "",
+    licenseNumber: "",
+    speciality: "",
+  });
