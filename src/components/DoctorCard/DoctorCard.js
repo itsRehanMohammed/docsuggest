@@ -26,7 +26,7 @@ const DoctorCard = ({ place, selected, refProp }) => {
       <Link to={`/doctorsearch/${place.name}`}>
         <Card elevation={6}>
           <CardMedia
-            style={{ height: 350 }}
+            style={{ height: 180 }}
             image={
               place.photo
                 ? place.photo.images.large.url

@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import TextField from "@mui/material/TextField";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import "./Login.css";
-import { userLogin, userData } from "../../api";
+import { userLoginAPI, userDataAPI } from "../../api";
 
 const Login = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -19,7 +19,7 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await userLogin(credentials);
+      const response = await userLoginAPI(credentials);
       const data = response.data;
 
       if (response.status === 200) {
@@ -27,7 +27,7 @@ const Login = () => {
         toast.success("Logged in successfully!");
         localStorage.setItem("token", data.access_token);
         localStorage.setItem("refresh_token", data.refresh_token);
-        userData();
+        userDataAPI();
         // Redirect to the desired page
         setTimeout(() => {
           window.location.href = "http://localhost:3001/";

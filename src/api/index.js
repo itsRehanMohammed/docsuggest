@@ -1,3 +1,3 @@
-export { default as userData } from "./userData";
-export { default as userLogin } from "./userLogin";
-export { default as userRegister } from "./userRegister";
+export { default as userDataAPI } from "./userDataAPI";
+export { default as userLoginAPI } from "./userLoginAPI";
+export { default as userRegisterAPI } from "./userRegisterAPI";

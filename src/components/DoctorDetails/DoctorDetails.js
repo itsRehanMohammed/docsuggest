@@ -147,8 +147,41 @@ const DoctorDetails = () => {
                     </p>
                   </div>
                 </div>
+              </div>
+              <div className="container px-5 pb-24 mx-auto">
+                <div className="flex flex-wrap -mx-4 -mb-10 text-center bg-gray-100">
+                  <div className="sm:w-1/2 mb-10 px-4">
+                    <h2 className="title-font text-2xl font-medium text-gray-900 mt-6 mb-3">
+                      Office Location
+                    </h2>
+                    <p className="leading-relaxed text-base px-20">
+                      {" "}
+                      Florida City, USA
+                    </p>
+                    <button className="flex mx-auto mt-3 text-white bg-blue-500 border-0 py-2 px-5 focus:outline-none hover:bg-blue-600 rounded">
+                      Get Direction
+                    </button>
+                  </div>
+                  <div className="sm:w-1/2 mb-10 px-4">
+                    <h2 className="title-font text-2xl text-center font-medium text-gray-900 mt-6 mb-3">
+                      Contact Details
+                      {/* <div class="w-12 h-1 bg-blue-500 rounded mt-2 mb-4"></div> */}
+                    </h2>
 
-                <h2></h2>
+                    <p className="leading-relaxed mt-4 text-base">
+                      phone no.{" "}
+                      <a className="inline-flex  font-semibold text-blue-500 rounded">
+                        +1 0000 0000
+                      </a>
+                    </p>
+                    <p className="leading-relaxed mt-4 text-base">
+                      Email{" "}
+                      <a className="inline-flex  font-semibold text-blue-500  rounded ">
+                        help@doctor.com
+                      </a>
+                    </p>
+                  </div>
+                </div>
               </div>
               <DoctorReviews doctor={item} />
             </section>

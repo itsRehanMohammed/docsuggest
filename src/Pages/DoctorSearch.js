@@ -5,6 +5,7 @@ import List from "../components/List/List";
 import { LoadScript, PanTo } from "@react-google-maps/api";
 import data from "../places.json";
 import { CssBaseline, Grid } from "@material-ui/core";
+import { getDoctorsData } from "../api/doctorAPI";
 const DoctorSearch = () => {
   const [type, setType] = useState("restaurants");
   const [rating, setRating] = useState("");
@@ -37,15 +38,17 @@ const DoctorSearch = () => {
   }, [rating]);
 
   useEffect(() => {
-    // if (bounds) {
     setIsLoading(true);
-
-    setPlaces(data.data.filter((place) => place.name && place.num_reviews > 0));
-    setFilteredPlaces([]);
-    setRating("");
-    setIsLoading(false);
-    // }
-  }, [bounds, type]);
+    getDoctorsData(coords.lat, coords.lng).then((data) => {
+      console.log({ data });
+      setPlaces(
+        data?.doctors.filter((place) => place.name && place.num_reviews > 0)
+      );
+      setFilteredPlaces([]);
+      setRating("");
+      setIsLoading(false);
+    });
+  }, [coords]);
 
   const onLoad = (autoC) => setAutocomplete(autoC);
 
@@ -93,7 +96,8 @@ const DoctorSearch = () => {
             style={{
               display: "flex",
               justifyContent: "center",
-              alignItems: "center",
+              // alignItems: "center",
+              padding: "25px 0px",
             }}
           >
             <Map

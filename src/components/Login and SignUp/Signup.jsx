@@ -4,7 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import TextField from "@mui/material/TextField";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import "./Login.css";
-import { userRegister } from "../../api/userRegister";
+import { userRegisterAPI } from "../../api";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ const Signup = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await userRegister(credentials);
+      const response = await userRegisterAPI(credentials);
       if (response.status === 200) {
         // Login successful
         toast.success("Account Created Successfully");
