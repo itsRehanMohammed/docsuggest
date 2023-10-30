@@ -9,7 +9,7 @@ const DoctorDetails = () => {
     <>
       {data.data.map((item) => {
         return (
-          item.name === doctorname && (
+          item.name.toLocaleLowerCase() === doctorname.toLocaleLowerCase() && (
             <section className="text-gray-600 body-font overflow-hidden">
               <div className="container px-5 py-24 mx-auto">
                 <div className="lg:w-full mx-auto flex flex-wrap">
@@ -165,19 +165,25 @@ const DoctorDetails = () => {
                   <div className="sm:w-1/2 mb-10 px-4">
                     <h2 className="title-font text-2xl text-center font-medium text-gray-900 mt-6 mb-3">
                       Contact Details
-                      {/* <div class="w-12 h-1 bg-blue-500 rounded mt-2 mb-4"></div> */}
+                      {/* <div className="w-12 h-1 bg-blue-500 rounded mt-2 mb-4"></div> */}
                     </h2>
 
                     <p className="leading-relaxed mt-4 text-base">
-                      phone no.{" "}
-                      <a className="inline-flex  font-semibold text-blue-500 rounded">
-                        +1 0000 0000
+                      phone no:{" "}
+                      <a
+                        href={`tel:${item.phone}`}
+                        className="inline-flex  font-semibold text-blue-500 rounded"
+                      >
+                        {item.phone}
                       </a>
                     </p>
                     <p className="leading-relaxed mt-4 text-base">
-                      Email{" "}
-                      <a className="inline-flex  font-semibold text-blue-500  rounded ">
-                        help@doctor.com
+                      email:{" "}
+                      <a
+                        href={`mailto:${item.email}`}
+                        className="inline-flex  font-semibold text-blue-500  rounded "
+                      >
+                        {item.email}
                       </a>
                     </p>
                   </div>

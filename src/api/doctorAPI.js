@@ -1,7 +1,7 @@
 /* eslint-disable consistent-return */
 import axios from "axios";
 
-export const getDoctorsData = async (lat, lng) => {
+export const getDoctorsData = async (lat, lng, type) => {
   try {
     const response = await axios.get(
       ` http://localhost:5000/api/searchdoctors`,
@@ -9,6 +9,7 @@ export const getDoctorsData = async (lat, lng) => {
         params: {
           lat,
           lng,
+          type,
         },
       }
     );

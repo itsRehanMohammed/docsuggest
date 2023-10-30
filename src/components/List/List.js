@@ -21,6 +21,7 @@ const List = ({
   childClicked,
   isLoading,
 }) => {
+  console.log({ places });
   const [elRefs, setElRefs] = useState([]);
   const classes = useStyles();
 
@@ -48,9 +49,9 @@ const List = ({
               value={type}
               onChange={(e) => setType(e.target.value)}
             >
-              <MenuItem value="restaurants">Restaurants</MenuItem>
-              <MenuItem value="hotels">Hotels</MenuItem>
-              <MenuItem value="attractions">Attractions</MenuItem>
+              <MenuItem value="surgon">Surgon</MenuItem>
+              <MenuItem value="clinic">Clinic</MenuItem>
+              <MenuItem value="dentist">Dentist</MenuItem>
             </Select>
           </FormControl>
           <FormControl className={classes.formControl}>
@@ -60,7 +61,7 @@ const List = ({
               value={rating}
               onChange={(e) => setRating(e.target.value)}
             >
-              <MenuItem value="">All</MenuItem>
+              <MenuItem value="0">All</MenuItem>
               <MenuItem value="3">Above 3.0</MenuItem>
               <MenuItem value="4">Above 4.0</MenuItem>
               <MenuItem value="4.5">Above 4.5</MenuItem>

@@ -6,7 +6,15 @@ import LocationOnOutlinedIcon from "@material-ui/icons/LocationOnOutlined";
 import Rating from "@material-ui/lab/Rating";
 import mapStyles from "../../mapStyles";
 import Header from "../Header/Header.js";
-const Map = ({ coords, places, setChildClicked, onPlaceChanged, onLoad }) => {
+const Map = ({
+  coords,
+  places,
+  setChildClicked,
+  onPlaceChanged,
+  onLoad,
+  setBounds,
+  setCoords,
+}) => {
   const classes = useStyles();
   const matches = useMediaQuery("(min-width:600px)");
 
@@ -38,7 +46,7 @@ const Map = ({ coords, places, setChildClicked, onPlaceChanged, onLoad }) => {
             margin={[50, 50, 50, 50]}
           >
             {/* <MarkerF position={center} /> */}
-            {places.length &&
+            {places?.length &&
               places.map((place, i) => (
                 <div
                   className={classes.markerContainer}

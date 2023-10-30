@@ -30,7 +30,7 @@ const Login = () => {
         userDataAPI();
         // Redirect to the desired page
         setTimeout(() => {
-          window.location.href = "http://localhost:3001/";
+          window.location.href = "http://localhost:3000/";
         }, 1000);
       } else if (response.status === 401) {
         // Handle the case of wrong credentials

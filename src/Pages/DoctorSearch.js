@@ -7,7 +7,7 @@ import data from "../places.json";
 import { CssBaseline, Grid } from "@material-ui/core";
 import { getDoctorsData } from "../api/doctorAPI";
 const DoctorSearch = () => {
-  const [type, setType] = useState("restaurants");
+  const [type, setType] = useState("clinic");
   const [rating, setRating] = useState("");
 
   const [coords, setCoords] = useState({});
@@ -38,17 +38,20 @@ const DoctorSearch = () => {
   }, [rating]);
 
   useEffect(() => {
+    console.log("yes", bounds);
     setIsLoading(true);
-    getDoctorsData(coords.lat, coords.lng).then((data) => {
-      console.log({ data });
-      setPlaces(
-        data?.doctors.filter((place) => place.name && place.num_reviews > 0)
-      );
-      setFilteredPlaces([]);
-      setRating("");
-      setIsLoading(false);
-    });
-  }, [coords]);
+    if (coords.lat) {
+      getDoctorsData(coords.lat, coords.lng, type).then((data) => {
+        console.log({ data });
+        setPlaces(
+          data?.doctors.filter((place) => place.name && place.num_reviews > 0)
+        );
+        setFilteredPlaces([]);
+        setRating("");
+        setIsLoading(false);
+      });
+    }
+  }, [coords, type]);
 
   const onLoad = (autoC) => setAutocomplete(autoC);
 

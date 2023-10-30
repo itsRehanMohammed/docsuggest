@@ -113,8 +113,8 @@ module.exports = () => {
         },
       ],
       category: {
-        key: "clinic",
-        name: "Clinic",
+        key: "surgon",
+        name: "surgon",
       },
       subcategory: [
         {
@@ -268,7 +268,7 @@ module.exports = () => {
         },
       ],
 
-      rating: "5.0",
+      rating: "3.5",
       is_closed: false,
       open_now_text: "Closed Now",
       is_long_closed: false,
@@ -298,8 +298,8 @@ module.exports = () => {
         },
       ],
       category: {
-        key: "clinic",
-        name: "Clinic",
+        key: "surgon",
+        name: "surgon",
       },
       subcategory: [
         {
@@ -453,7 +453,7 @@ module.exports = () => {
         },
       ],
 
-      rating: "5.0",
+      rating: "3.0",
       is_closed: false,
       open_now_text: "Closed Now",
       is_long_closed: false,
@@ -638,7 +638,7 @@ module.exports = () => {
         },
       ],
 
-      rating: "5.0",
+      rating: "4.1",
       is_closed: false,
       open_now_text: "Closed Now",
       is_long_closed: false,
@@ -668,8 +668,8 @@ module.exports = () => {
         },
       ],
       category: {
-        key: "clinic",
-        name: "Clinic",
+        key: "dentist",
+        name: "dentist",
       },
       subcategory: [
         {
@@ -823,7 +823,7 @@ module.exports = () => {
         },
       ],
 
-      rating: "5.0",
+      rating: "4.6",
       is_closed: false,
       open_now_text: "Closed Now",
       is_long_closed: false,
@@ -853,8 +853,8 @@ module.exports = () => {
         },
       ],
       category: {
-        key: "clinic",
-        name: "Clinic",
+        key: "dentist",
+        name: "dentist",
       },
       subcategory: [
         {
@@ -1008,7 +1008,7 @@ module.exports = () => {
         },
       ],
 
-      rating: "5.0",
+      rating: "3.4",
       is_closed: false,
       open_now_text: "Closed Now",
       is_long_closed: false,

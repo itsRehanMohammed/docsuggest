@@ -30,7 +30,7 @@ const Hero = () => {
                 <Link to={"/doctorsearch"}>Search</Link>
               </button>
             </div>
-            <p class="text-sm mt-2 text-gray-500 w-full"></p>
+            <p className="text-sm mt-2 text-gray-500 w-full"></p>
             <div className="flex my-10">
               <button className="bg-gray-100 inline-flex py-3 px-5 rounded-lg items-center hover:bg-gray-200 focus:outline-none">
                 <svg
