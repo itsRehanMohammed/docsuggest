@@ -10,7 +10,21 @@ import Login from "./components/Login and SignUp/Login";
 import ScrollToTop from "./ScrollToTop";
 import DoctorSearch from "./Pages/DoctorSearch";
 import DoctorDetails from "./components/DoctorDetails/DoctorDetails";
+import LoginModal from "./Modals/LoginModal";
+import { useEffect, useState } from "react";
 function App() {
+  const [isLoggedIn] = useState(!!localStorage.getItem("token"));
+  const [loginOpen, setLoginOpen] = useState(false);
+  useEffect(() => {
+    if (!isLoggedIn) {
+      setTimeout(() => {
+        // setLoginOpen(true);
+      }, 40000);
+    }
+  }, []);
+  const handleLoginModalClose = () => {
+    setLoginOpen(false);
+  };
   return (
     <>
       <Router>
@@ -26,9 +40,10 @@ function App() {
           <Route
             exact
             path="/doctorsearch/:doctorname"
-            element={<DoctorDetails />}
+            element={<DoctorDetails isLoggedIn={isLoggedIn} />}
           />
         </Routes>
+        <LoginModal open={loginOpen} onClose={handleLoginModalClose} />
         <Footer />
       </Router>
     </>

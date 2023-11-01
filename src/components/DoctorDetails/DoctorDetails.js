@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import data from "../../places.json";
 import { useParams } from "react-router-dom";
 import DoctorReviews from "./DoctorReviews";
-const DoctorDetails = () => {
+const DoctorDetails = ({ isLoggedIn }) => {
   const { doctorname } = useParams();
   console.log("data", data.data, doctorname);
   return (
@@ -145,51 +145,92 @@ const DoctorDetails = () => {
                       bottle austin listicle pour-over, neutra jean shorts
                       keytar banjo tattooed umami cardigan.
                     </p>
+                    <p className="leading-relaxed my-4 text-gray-900">
+                      <span className=" font-bold">NPI Number: </span>{" "}
+                      9990921090
+                    </p>
                   </div>
                 </div>
               </div>
               <div className="container px-5 pb-24 mx-auto">
-                <div className="flex flex-wrap -mx-4 -mb-10 text-center bg-gray-100">
-                  <div className="sm:w-1/2 mb-10 px-4">
-                    <h2 className="title-font text-2xl font-medium text-gray-900 mt-6 mb-3">
-                      Office Location
-                    </h2>
-                    <p className="leading-relaxed text-base px-20">
-                      {" "}
-                      Florida City, USA
-                    </p>
-                    <button className="flex mx-auto mt-3 text-white bg-blue-500 border-0 py-2 px-5 focus:outline-none hover:bg-blue-600 rounded">
-                      Get Direction
-                    </button>
-                  </div>
-                  <div className="sm:w-1/2 mb-10 px-4">
+                <div className="flex flex-wrap -mx-4 -mb-10 text-center justify-center">
+                  <div className="sm:w-2/2 mb-10 px-4">
                     <h2 className="title-font text-2xl text-center font-medium text-gray-900 mt-6 mb-3">
-                      Contact Details
+                      Awards
                       {/* <div className="w-12 h-1 bg-blue-500 rounded mt-2 mb-4"></div> */}
                     </h2>
+                    <p className="leading-relaxed text-base">Honours of MBBS</p>
+                    <p className="leading-relaxed text-base">
+                      Doctor of the Year 2017
+                    </p>
+                  </div>
+                  <div className="sm:w-1/2 mb-10 px-4">
+                    <h2 className="title-font text-2xl font-medium text-gray-900 mt-6 mb-3">
+                      Education
+                    </h2>
+                    <p className="leading-relaxed text-base px-20">School</p>
+                    <p className="leading-relaxed text-base px-20">College</p>
+                  </div>
 
-                    <p className="leading-relaxed mt-4 text-base">
-                      phone no:{" "}
-                      <a
-                        href={`tel:${item.phone}`}
-                        className="inline-flex  font-semibold text-blue-500 rounded"
-                      >
-                        {item.phone}
-                      </a>
-                    </p>
-                    <p className="leading-relaxed mt-4 text-base">
-                      email:{" "}
-                      <a
-                        href={`mailto:${item.email}`}
-                        className="inline-flex  font-semibold text-blue-500  rounded "
-                      >
-                        {item.email}
-                      </a>
-                    </p>
+                  <div className="sm:w-2/2 mb-10 px-4">
+                    <h2 className="title-font text-2xl text-center font-medium text-gray-900 mt-6 mb-3">
+                      Certificates
+                      {/* <div className="w-12 h-1 bg-blue-500 rounded mt-2 mb-4"></div> */}
+                    </h2>
+                    <p className="leading-relaxed text-base">MMBS</p>
+                    <p className="leading-relaxed text-base">ILTS</p>
                   </div>
                 </div>
               </div>
-              <DoctorReviews doctor={item} />
+
+              {isLoggedIn && (
+                <div className="container px-5 pb-24 mx-auto">
+                  <div className="flex flex-wrap -mx-4 -mb-10 text-center bg-gray-100">
+                    <div className="sm:w-1/2 mb-10 px-4">
+                      <h2 className="title-font text-2xl font-medium text-gray-900 mt-6 mb-3">
+                        Office Location
+                      </h2>
+                      <p className="leading-relaxed text-base px-20">
+                        {" "}
+                        Florida City, USA
+                      </p>
+                      <a
+                        href={`https://www.google.com/maps?q=${item.latitude},${item.longitude}`}
+                        className="flex mx-auto mt-3 text-white bg-blue-500 border-0 py-2 px-5 focus:outline-none hover:bg-blue-600 rounded max-w-[136px]"
+                        target="_blank"
+                      >
+                        Get Direction
+                      </a>
+                    </div>
+                    <div className="sm:w-1/2 mb-10 px-4">
+                      <h2 className="title-font text-2xl text-center font-medium text-gray-900 mt-6 mb-3">
+                        Contact Details
+                        {/* <div className="w-12 h-1 bg-blue-500 rounded mt-2 mb-4"></div> */}
+                      </h2>
+
+                      <p className="leading-relaxed mt-4 text-base">
+                        phone no:{" "}
+                        <a
+                          href={`tel:${item.phone}`}
+                          className="inline-flex  font-semibold text-blue-500 rounded"
+                        >
+                          {item.phone}
+                        </a>
+                      </p>
+                      <p className="leading-relaxed mt-4 text-base">
+                        email:{" "}
+                        <a
+                          href={`mailto:${item.email}`}
+                          className="inline-flex  font-semibold text-blue-500  rounded "
+                        >
+                          {item.email}
+                        </a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+              <DoctorReviews doctor={item} isLoggedIn={isLoggedIn} />
             </section>
           )
         );

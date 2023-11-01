@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from "react";
 import Rating from "@mui/material/Rating";
 import Box from "@mui/material/Box";
-const DoctorReviews = ({ doctor }) => {
-  const [isLoggedIn] = useState(!!localStorage.getItem("token"));
+import "./doctorDetails.css";
+const DoctorReviews = ({ doctor, isLoggedIn }) => {
   const [reviews] = useState(doctor.reviews);
-  const [newReview, setNewReview] = useState("");
-  const [rating, setRating] = useState(0); // Initialize the rating state
+  const [Review, setReview] = useState({ comment: "", rating: 0 });
   const submitReview = async () => {
     if (!isLoggedIn) {
       // Redirect to the login page or show a modal to log in
       return;
     }
-    console.log({ newReview });
+    console.log(Review);
   };
-
   return (
     <section
       id="review-container"
@@ -29,16 +27,19 @@ const DoctorReviews = ({ doctor }) => {
             <div className="my-7">
               <Rating
                 name="simple-controlled"
-                value={rating}
-                onChange={(event, newValue) => {
-                  setRating(newValue);
+                value={Review.rating}
+                onChange={(event, rating) => {
+                  setReview((prevReview) => ({ ...prevReview, rating }));
                 }}
               />
               <textarea
                 className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-400"
                 placeholder="Write your review..."
-                value={newReview}
-                onChange={(e) => setNewReview(e.target.value)}
+                value={Review.comment}
+                onChange={(e) => {
+                  const comment = e.target.value;
+                  setReview((prevReview) => ({ ...prevReview, comment }));
+                }}
               ></textarea>
               <button
                 className="mt-2 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded"
@@ -50,7 +51,7 @@ const DoctorReviews = ({ doctor }) => {
           )}
 
           {reviews.length > 0 ? (
-            <div className="overflow-x-hidden overflow-y-scroll max-h-[600px]">
+            <div className="overflow-x-hidden overflow-y-scroll max-h-[600px] hide-scrollbar">
               {reviews.map((review, index) => (
                 <div
                   key={review.review_id}

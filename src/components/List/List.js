@@ -68,21 +68,27 @@ const List = ({
             </Select>
           </FormControl>
           <Grid container spacing={3} className={classes.list}>
-            {places?.map((place, i) => (
-              <Grid
-                ref={elRefs[i]}
-                key={i}
-                item
-                xs={12}
-                className={classes.listItem}
-              >
-                <DoctorCard
-                  selected={Number(childClicked) === i}
-                  refProp={elRefs[i]}
-                  place={place}
-                />
-              </Grid>
-            ))}
+            {places ? (
+              places?.map((place, i) => (
+                <Grid
+                  ref={elRefs[i]}
+                  key={i}
+                  item
+                  xs={12}
+                  className={classes.listItem}
+                >
+                  <DoctorCard
+                    selected={Number(childClicked) === i}
+                    refProp={elRefs[i]}
+                    place={place}
+                  />
+                </Grid>
+              ))
+            ) : (
+              <div className="mx-auto flex items-center font-bold text-[24px] h-full">
+                No Doctors Found
+              </div>
+            )}
           </Grid>
         </>
       )}
