@@ -3,8 +3,8 @@ module.exports = () => {
     {
       location_id: "1008614",
       name: "Michael Smith",
-      latitude: "19.096565",
-      longitude: "72.85387",
+      latitude: "19.0974729",
+      longitude: "72.8869815",
       num_reviews: "730",
       timezone: "Asia/Kolkata",
       location_string: "Mumbai, Maharashtra",
@@ -113,8 +113,8 @@ module.exports = () => {
         },
       ],
       category: {
-        key: "surgon",
-        name: "surgon",
+        key: "clinic",
+        name: "clinic",
       },
       subcategory: [
         {

@@ -16,20 +16,9 @@ const Hero = () => {
               vice offal plaid everyday carry. Gluten-free chia VHS squid
               listicle artisan.
             </p>
-            <div className="flex w-full justify-center items-end">
-              <div className="relative mr-4 lg:w-full xl:w-1/2 w-2/4 md:w-full text-left">
-                <input
-                  type="text"
-                  id="hero-field"
-                  name="hero-field"
-                  className="w-full bg-white-100  rounded focus:ring-2 focus:ring-blue-200 border border-gray-300 focus:border-blue-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                  placeholder="City, State or Zip Code"
-                />
-              </div>
-              <button className="inline-flex text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg">
-                <Link to={"/doctorsearch"}>Search</Link>
-              </button>
-            </div>
+            <button className="inline-flex text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg">
+              <Link to={"/doctorsearch"}>Get Started</Link>
+            </button>
             <p className="text-sm mt-2 text-gray-500 w-full"></p>
             <div className="flex my-10">
               <button className="bg-gray-100 inline-flex py-3 px-5 rounded-lg items-center hover:bg-gray-200 focus:outline-none">

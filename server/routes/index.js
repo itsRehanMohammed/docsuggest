@@ -18,6 +18,9 @@ import multer from "multer";
 import settingsController from "../controllers/settingController";
 import doctorData from "../mock/doctorData";
 import doctorController from "../controllers/doctors/doctorController";
+import doctorRegisterController from "../controllers/auth/DoctorRegister";
+import doctorLoginController from "../controllers/auth/DoctorLogin";
+import reviewController from "../controllers/doctors/reviewController";
 
 // router.get("/", (req, res) => {
 //   res.send("HI MY Name Rehan");
@@ -41,9 +44,20 @@ router.get("/api/getkey", (req, res) => {
 
 //doctors
 router.get("/api/searchdoctors", doctorController.searchDoctor);
-router.get("/api/doctors", (req, res) => {
-  res.status(200).send(doctorData());
-});
+// router.get("/api/doctors", (req, res) => {
+//   res.status(200).send(doctorData());
+// });
+router.post("/api/doctoronboard", doctorRegisterController.register);
+router.post("/api/doctorlogin", doctorLoginController.login);
+router.get("/api/doctors", doctorController.index);
+router.delete("/api/doctor/:id", [auth, admin], doctorController.deleteDoctor);
+router.put("/api/doctorupdate/:id", [auth, admin], doctorController.update);
+router.put("/api/doctors/:doctorId/reviews", reviewController.addReview);
+router.delete(
+  "/api/doctors/:doctorId/reviews/:reviewID",
+  reviewController.deleteReview
+);
+
 router.post("/api/addProduct", [auth, admin], productController.store);
 router.put("/api/product/:id", [auth, admin], productController.update);
 router.delete("/api/product/:id", [auth, admin], productController.delete);

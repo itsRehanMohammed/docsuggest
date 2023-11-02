@@ -76,46 +76,42 @@ const DoctorSearch = () => {
   return (
     <>
       <CssBaseline />
-      <LoadScript
-        googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
-        libraries={["places"]} // Specify "places" library
-      >
-        <Grid container spacing={1} style={{ width: "100%" }}>
-          <Grid item xs={12} md={4}>
-            <List
-              isLoading={isLoading}
-              childClicked={childClicked}
-              places={places}
-              type={type}
-              setType={setType}
-              rating={rating}
-              setRating={setRating}
-            />
-          </Grid>
-          <Grid
-            item
-            xs={12}
-            md={8}
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              // alignItems: "center",
-              padding: "25px 0px",
-            }}
-          >
-            <Map
-              setChildClicked={setChildClicked}
-              setBounds={setBounds}
-              setCoords={setCoords}
-              coords={coords}
-              places={places}
-              onPlaceChanged={onPlaceChanged}
-              onLoad={onLoad}
-              setMap={setMap}
-            />
-          </Grid>
+
+      <Grid container spacing={1} style={{ width: "100%" }}>
+        <Grid item xs={12} md={4}>
+          <List
+            isLoading={isLoading}
+            childClicked={childClicked}
+            places={places}
+            type={type}
+            setType={setType}
+            rating={rating}
+            setRating={setRating}
+          />
         </Grid>
-      </LoadScript>
+        <Grid
+          item
+          xs={12}
+          md={8}
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            // alignItems: "center",
+            padding: "25px 0px",
+          }}
+        >
+          <Map
+            setChildClicked={setChildClicked}
+            setBounds={setBounds}
+            setCoords={setCoords}
+            coords={coords}
+            places={places}
+            onPlaceChanged={onPlaceChanged}
+            onLoad={onLoad}
+            setMap={setMap}
+          />
+        </Grid>
+      </Grid>
     </>
   );
 };

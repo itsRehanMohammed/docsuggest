@@ -7,7 +7,7 @@ class CustomErrorHandler extends Error {
   static alreadyExist(message) {
     return new CustomErrorHandler(409, message);
   }
-  static wrongCredentials(message = "Email or Password is wrong!") {
+  static wrongCredentials(message = "Email is wrong!") {
     return new CustomErrorHandler(401, message);
   }
   static unAuthorized(message = "UnAuthorized!") {

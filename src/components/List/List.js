@@ -68,7 +68,7 @@ const List = ({
             </Select>
           </FormControl>
           <Grid container spacing={3} className={classes.list}>
-            {places ? (
+            {places.length > 0 ? (
               places?.map((place, i) => (
                 <Grid
                   ref={elRefs[i]}

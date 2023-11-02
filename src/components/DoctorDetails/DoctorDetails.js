@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import data from "../../places.json";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import DoctorReviews from "./DoctorReviews";
 const DoctorDetails = ({ isLoggedIn }) => {
   const { doctorname } = useParams();
@@ -152,8 +152,8 @@ const DoctorDetails = ({ isLoggedIn }) => {
                   </div>
                 </div>
               </div>
-              <div className="container px-5 pb-24 mx-auto">
-                <div className="flex flex-wrap -mx-4 -mb-10 text-center justify-center">
+              <div className="container px-5 mx-auto">
+                <div className="flex flex-wrap -mx-4 pt-10 pb-24 -mb-10 text-center justify-center bg-gray-100">
                   <div className="sm:w-2/2 mb-10 px-4">
                     <h2 className="title-font text-2xl text-center font-medium text-gray-900 mt-6 mb-3">
                       Awards
@@ -168,8 +168,12 @@ const DoctorDetails = ({ isLoggedIn }) => {
                     <h2 className="title-font text-2xl font-medium text-gray-900 mt-6 mb-3">
                       Education
                     </h2>
-                    <p className="leading-relaxed text-base px-20">School</p>
-                    <p className="leading-relaxed text-base px-20">College</p>
+                    <p className="leading-relaxed text-base px-20">
+                      Padua High School
+                    </p>
+                    <p className="leading-relaxed text-base px-20">
+                      IIT Mumbai
+                    </p>
                   </div>
 
                   <div className="sm:w-2/2 mb-10 px-4">
@@ -177,10 +181,20 @@ const DoctorDetails = ({ isLoggedIn }) => {
                       Certificates
                       {/* <div className="w-12 h-1 bg-blue-500 rounded mt-2 mb-4"></div> */}
                     </h2>
-                    <p className="leading-relaxed text-base">MMBS</p>
+                    <p className="leading-relaxed text-base">MBBS</p>
                     <p className="leading-relaxed text-base">ILTS</p>
                   </div>
                 </div>
+                {!isLoggedIn && (
+                  <div className="sm:w-2/2 mb-10 px-4">
+                    <Link
+                      to={"/login"}
+                      className="flex mx-auto mt-3 text-white bg-blue-500 border-0 py-2 px-5 focus:outline-none hover:bg-blue-600 rounded max-w-[214px]"
+                    >
+                      Login To Get Full Details
+                    </Link>
+                  </div>
+                )}
               </div>
 
               {isLoggedIn && (

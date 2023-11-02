@@ -4,7 +4,7 @@ import CustomErrorHandler from "../services/CustomErrorHandler";
 const admin = async (req, res, next) => {
   try {
     const user = await User.findOne({ _id: req.user._id });
-    if (user.role === "admin") {
+    if (user.role === "admin" || user.role === "doctor") {
       next();
     } else {
       return next(CustomErrorHandler.unAuthorized());

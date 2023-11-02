@@ -12,6 +12,7 @@ import DoctorSearch from "./Pages/DoctorSearch";
 import DoctorDetails from "./components/DoctorDetails/DoctorDetails";
 import LoginModal from "./Modals/LoginModal";
 import { useEffect, useState } from "react";
+import { LoadScript } from "@react-google-maps/api";
 function App() {
   const [isLoggedIn] = useState(!!localStorage.getItem("token"));
   const [loginOpen, setLoginOpen] = useState(false);
@@ -27,25 +28,30 @@ function App() {
   };
   return (
     <>
-      <Router>
-        <Navbar />
-        <ScrollToTop />
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route exact path="/help" element={<Help />} />
-          <Route exact path="/register" element={<Signup />} />
-          <Route exact path="/login" element={<Login />} />
-          <Route exact path="/listpractice" element={<Practice />} />
-          <Route exact path="/doctorsearch" element={<DoctorSearch />} />
-          <Route
-            exact
-            path="/doctorsearch/:doctorname"
-            element={<DoctorDetails isLoggedIn={isLoggedIn} />}
-          />
-        </Routes>
-        <LoginModal open={loginOpen} onClose={handleLoginModalClose} />
-        <Footer />
-      </Router>
+      <LoadScript
+        googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
+        libraries={["places"]} // Specify "places" library
+      >
+        <Router>
+          <Navbar />
+          <ScrollToTop />
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route exact path="/help" element={<Help />} />
+            <Route exact path="/register" element={<Signup />} />
+            <Route exact path="/login" element={<Login />} />
+            <Route exact path="/listpractice" element={<Practice />} />
+            <Route exact path="/doctorsearch" element={<DoctorSearch />} />
+            <Route
+              exact
+              path="/doctorsearch/:doctorname"
+              element={<DoctorDetails isLoggedIn={isLoggedIn} />}
+            />
+          </Routes>
+          <LoginModal open={loginOpen} onClose={handleLoginModalClose} />
+          <Footer />
+        </Router>
+      </LoadScript>
     </>
   );
 }
