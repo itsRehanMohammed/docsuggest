@@ -21,8 +21,9 @@ const handleMultipartData = multer({
   storage,
   limits: { fileSize: 1000000 * 5 },
 }).single("image"); // 5mb
+
 const doctorController = {
-  async searchDoctor(req, res, next) {
+  async searchDoctorMock(req, res, next) {
     const { lat, lng, type } = req.query;
 
     if (!lat || !lng) {
@@ -60,6 +61,52 @@ const doctorController = {
       doctors: filteredDoctors, // Include the filtered doctors
     });
   },
+
+  async searchDoctor(req, res, next) {
+    const { lat, lng, type } = req.query;
+    console.log({ lat, lng, type });
+    if (!lat || !lng) {
+      return res.status(400).json({
+        error: "Latitude and longitude are required in the query parameters.",
+      });
+    }
+
+    const latitude = parseFloat(lat);
+    const longitude = parseFloat(lng);
+    console.log(typeof longitude);
+    try {
+      // Query the database to find doctors
+      const doctors = await Doctor.find({
+        lat: { $gte: latitude - 1.5, $lte: latitude + 1.5 }, // Adjust the range as needed
+        lng: { $gte: longitude - 1.5, $lte: longitude + 1.5 }, // Adjust the range as needed
+      });
+
+      // Filter by doctor type if type parameter is provided
+      const filteredDoctors = doctors.filter((doctor) => {
+        return !type || doctor.category.toLowerCase() === type.toLowerCase();
+      });
+
+      if (!filteredDoctors || filteredDoctors.length === 0) {
+        return res.json({
+          totalCount: 0,
+          doctors: [],
+        });
+      }
+      console.log({ filteredDoctors });
+      const totalCount = filteredDoctors.length;
+
+      res.json({
+        totalCount,
+        doctors: filteredDoctors,
+      });
+    } catch (err) {
+      return next(
+        CustomErrorHandler.serverError(
+          "Error fetching doctors from the database"
+        )
+      );
+    }
+  },
   async deleteDoctor(req, res, next) {
     try {
       const doctorId = req.params.id; // Assuming you are passing the doctor's ID as a URL parameter
@@ -79,6 +126,7 @@ const doctorController = {
       return next(err);
     }
   },
+
   async index(req, res, next) {
     let documents;
     try {

@@ -27,8 +27,8 @@ const doctorValidator = Joi.object().keys({
   education: Joi.string().required(),
   office_location: Joi.string().required(),
   npi: Joi.string().required(),
-  lat: Joi.string().required(),
-  lng: Joi.string().required(),
+  lat: Joi.number().required(),
+  lng: Joi.number().required(),
   phone: Joi.number().required(),
   hours: Joi.object()
     .keys({

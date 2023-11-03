@@ -6,8 +6,12 @@ import { LoadScript, PanTo } from "@react-google-maps/api";
 import data from "../places.json";
 import { CssBaseline, Grid } from "@material-ui/core";
 import { getDoctorsData } from "../api/doctorAPI";
+import { useLocation, useSearchParams } from "react-router-dom";
 const DoctorSearch = () => {
-  const [type, setType] = useState("clinic");
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const category = searchParams.get("category");
+  const [type, setType] = useState("");
   const [rating, setRating] = useState("");
 
   const [coords, setCoords] = useState({});
@@ -29,6 +33,9 @@ const DoctorSearch = () => {
         setCoords({ lat: latitude, lng: longitude });
       }
     );
+    if (category) {
+      setType(category);
+    }
   }, []);
 
   useEffect(() => {
@@ -43,9 +50,7 @@ const DoctorSearch = () => {
     if (coords.lat) {
       getDoctorsData(coords.lat, coords.lng, type).then((data) => {
         console.log({ data });
-        setPlaces(
-          data?.doctors.filter((place) => place.name && place.num_reviews > 0)
-        );
+        setPlaces(data?.doctors.filter((place) => place.name));
         setFilteredPlaces([]);
         setRating("");
         setIsLoading(false);

@@ -56,7 +56,7 @@ const DoctorCard = ({ place, selected, refProp }) => {
                 {place.ranking}
               </Typography>
             </Box>
-            {place?.awards?.map((award) => (
+            {/* {place?.awards?.map((award) => (
               <Box
                 display="flex"
                 justifyContent="space-between"
@@ -76,7 +76,7 @@ const DoctorCard = ({ place, selected, refProp }) => {
                 label={name}
                 className={classes.chip}
               />
-            ))}
+            ))} */}
             {place.address && (
               <Typography
                 gutterBottom

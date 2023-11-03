@@ -41,8 +41,8 @@ const doctorSchema = new Schema(
     awards: { type: String },
     education: { type: String, required: true },
     office_location: { type: String, required: true },
-    lat: { type: String },
-    lng: { type: String },
+    lat: { type: Number },
+    lng: { type: Number },
     npi: { type: String, required: true },
     phone: { type: Number, required: true },
     isClosed: {

@@ -43,7 +43,7 @@ router.get("/api/getkey", (req, res) => {
 });
 
 //doctors
-router.get("/api/searchdoctors", doctorController.searchDoctor);
+router.get("/api/searchdoctors", doctorController.searchDoctorMock);
 // router.get("/api/doctors", (req, res) => {
 //   res.status(200).send(doctorData());
 // });
@@ -51,7 +51,7 @@ router.post("/api/doctoronboard", doctorRegisterController.register);
 router.post("/api/doctorlogin", doctorLoginController.login);
 router.get("/api/doctors", doctorController.index);
 router.delete("/api/doctor/:id", [auth, admin], doctorController.deleteDoctor);
-router.put("/api/doctorupdate/:id", [auth, admin], doctorController.update);
+router.put("/api/doctorupdate/:id", doctorController.update);
 router.put("/api/doctors/:doctorId/reviews", reviewController.addReview);
 router.delete(
   "/api/doctors/:doctorId/reviews/:reviewID",

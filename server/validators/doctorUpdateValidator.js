@@ -22,8 +22,8 @@ const doctorUpdateValidator = Joi.object().keys({
   education: Joi.string(),
   office_location: Joi.string(),
   npi: Joi.string(),
-  lat: Joi.string(),
-  lng: Joi.string(),
+  lat: Joi.number(),
+  lng: Joi.number(),
   phone: Joi.number(),
   hours: Joi.object().keys({
     open_time: Joi.number(),
